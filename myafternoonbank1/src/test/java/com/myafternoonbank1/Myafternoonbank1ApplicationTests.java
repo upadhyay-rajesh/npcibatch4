@@ -1,0 +1,13 @@
+package com.myafternoonbank1;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class Myafternoonbank1ApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
