@@ -1,8 +1,14 @@
 package com.myafternoonbank1.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Employee {
 	private String name;
 	private String password;
+	
+	@Id
 	private String email;
 	private String address;
 	public String getName() {
