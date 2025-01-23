@@ -27,7 +27,7 @@ public class MyConsumerController {
 		return ee;
 	}
 	@PostMapping
-	public Employee createPost(@RequestBody Employee ee) {
+	public String createPost(@RequestBody Employee ee) {
 
 		//List<ServiceInstance> ll = ds.getInstances("MYBANKING");
 
@@ -36,7 +36,7 @@ public class MyConsumerController {
 		//String uri = myinstance.getUri().toString();
 
 		RestTemplate restTemplate = new RestTemplate();
-		Employee response = restTemplate.postForObject("http://localhost:10000/api/v1/employees", ee, Employee.class);
+		String response = restTemplate.postForObject("http://localhost:10000/api/v1/employees", ee, String.class);
 		return response;
 	}
 
