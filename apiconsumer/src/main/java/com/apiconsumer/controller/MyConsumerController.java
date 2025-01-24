@@ -47,10 +47,10 @@ public class MyConsumerController {
 
 		ServiceInstance myinstance = ll.get(0);
 
-		String uri = myinstance.getUri().toString();
+		String url = myinstance.getUri().toString();
 
 		RestTemplate restTemplate = new RestTemplate();
-		String response = restTemplate.postForObject("http://localhost:10000/api/v1/employees", ee, String.class);
+		String response = restTemplate.postForObject(url+"/api/v1/employees", ee, String.class);
 		return response;
 	}
 
@@ -61,10 +61,10 @@ public class MyConsumerController {
 
 		ServiceInstance myinstance = ll.get(0);
 
-		String uri = myinstance.getUri().toString();
+		String url = myinstance.getUri().toString();
 
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.put("http://localhost:10000/api/v1/employees" + id, ee);
+		restTemplate.put(url+"/api/v1/employees/" + id, ee);
 		return ee;
 	}
 
@@ -75,10 +75,10 @@ public class MyConsumerController {
 
 		ServiceInstance myinstance = ll.get(0);
 
-		String uri = myinstance.getUri().toString();
+		String url = myinstance.getUri().toString();
 
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.delete("http://localhost:10000" + "/api/v1/employees" + id);
+		restTemplate.delete(url+"/api/v1/employees/" + id);
 
 		return "deleted";
 	}
