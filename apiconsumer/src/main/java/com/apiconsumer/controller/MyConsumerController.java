@@ -23,6 +23,9 @@ public class MyConsumerController {
 	
 	@Autowired
 	DiscoveryClient ds;
+	
+	@Autowired
+	RestTemplate rtemp;
 
 	@GetMapping
 	public List<Employee> displayAll(){
@@ -34,7 +37,7 @@ public class MyConsumerController {
 		 String url=ss.getUri().toString();
 		
 		
-		RestTemplate rtemp=new RestTemplate();
+		//RestTemplate rtemp=new RestTemplate();
 		
 		List<Employee> ee=  rtemp.getForObject(url+"/api/v1/employees", List.class);
 		
@@ -49,8 +52,8 @@ public class MyConsumerController {
 
 		String url = myinstance.getUri().toString();
 
-		RestTemplate restTemplate = new RestTemplate();
-		String response = restTemplate.postForObject(url+"/api/v1/employees", ee, String.class);
+		//RestTemplate restTemplate = new RestTemplate();
+		String response = rtemp.postForObject(url+"/api/v1/employees", ee, String.class);
 		return response;
 	}
 
@@ -63,8 +66,8 @@ public class MyConsumerController {
 
 		String url = myinstance.getUri().toString();
 
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.put(url+"/api/v1/employees/" + id, ee);
+	//	RestTemplate restTemplate = new RestTemplate();
+		rtemp.put(url+"/api/v1/employees/" + id, ee);
 		return ee;
 	}
 
@@ -77,8 +80,8 @@ public class MyConsumerController {
 
 		String url = myinstance.getUri().toString();
 
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.delete(url+"/api/v1/employees/" + id);
+		//RestTemplate restTemplate = new RestTemplate();
+		rtemp.delete(url+"/api/v1/employees/" + id);
 
 		return "deleted";
 	}
